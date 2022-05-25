@@ -41,15 +41,14 @@ download_release() {
 
   local os arch
   case "$OSTYPE" in
-    darwin*)  os="darwin" ;;
-    linux*)   os="linux" ;;
-    *)        exit 1 ;;
+  darwin*) os="darwin" ;;
+  linux*) os="linux" ;;
+  *) exit 1 ;;
   esac
-  case `uname -m` in
-    x86_64)  arch="amd64" ;;
-    arm*)    arch="arm64" ;;
+  case $(uname -m) in
+  x86_64) arch="amd64" ;;
+  arm*) arch="arm64" ;;
   esac
-
 
   # https://github.com/GoogleCloudPlatform/terraformer/releases/download/0.8.20/terraformer-all-linux-amd64
   url="$GH_REPO/releases/download/${version}/terraformer-all-${os}-${arch}"
