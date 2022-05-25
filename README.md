@@ -4,19 +4,16 @@
 
 [Terraformer](https://github.com/GoogleCloudPlatform/terraformer) plugin for the [asdf version manager](https://asdf-vm.com).
 
+Terraformer is a CLI tool to generate terraform files from existing infrastructure (reverse Terraform).
+
 </div>
 
 # Contents
 
-- [What](#what)
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Contributing](#contributing)
 - [License](#license)
-
-# What
-
-Terraformer is a CLI tool to generate terraform files from existing infrastructure (reverse Terraform).
 
 # Dependencies
 
