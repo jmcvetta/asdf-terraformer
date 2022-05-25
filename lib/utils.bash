@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-set -x
 
 GH_REPO="https://github.com/GoogleCloudPlatform/terraformer"
 TOOL_NAME="terraformer"
