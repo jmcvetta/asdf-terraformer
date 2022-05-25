@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for terraformer.
 GH_REPO="https://github.com/GoogleCloudPlatform/terraformer"
 TOOL_NAME="terraformer"
 TOOL_TEST="terraformer --version"
@@ -31,8 +30,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-  # Change this function if terraformer has other means of determining installable versions.
   list_github_tags
 }
 
@@ -41,8 +38,19 @@ download_release() {
   version="$1"
   filename="$2"
 
-  # TODO: Adapt the release URL convention for terraformer
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  local os arch
+  case "$OSTYPE" in
+  darwin*) os="darwin" ;;
+  linux*) os="linux" ;;
+  *) exit 1 ;;
+  esac
+  case $(uname -m) in
+  x86_64) arch="amd64" ;;
+  arm*) arch="arm64" ;;
+  esac
+
+  # https://github.com/GoogleCloudPlatform/terraformer/releases/download/0.8.20/terraformer-all-linux-amd64
+  url="$GH_REPO/releases/download/${version}/terraformer-all-${os}-${arch}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -58,10 +66,9 @@ install_version() {
   fi
 
   (
-    mkdir -p "$install_path"
-    cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
+    mkdir -p "$install_path/bin"
+    cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path/bin"
 
-    # TODO: Asert terraformer executable exists.
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
     test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
