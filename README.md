@@ -2,31 +2,31 @@
 
 # asdf-terraformer [![Build](https://github.com/jmcvetta/asdf-terraformer/actions/workflows/build.yml/badge.svg)](https://github.com/jmcvetta/asdf-terraformer/actions/workflows/build.yml) [![Lint](https://github.com/jmcvetta/asdf-terraformer/actions/workflows/lint.yml/badge.svg)](https://github.com/jmcvetta/asdf-terraformer/actions/workflows/lint.yml)
 
-
-[terraformer](https://github.com/GoogleCloudPlatform/terraformer) plugin for the [asdf version manager](https://asdf-vm.com).
+[Terraformer](https://github.com/GoogleCloudPlatform/terraformer) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
 # Contents
 
+- [What](#what)
 - [Dependencies](#dependencies)
 - [Install](#install)
-- [Why?](#why)
 - [Contributing](#contributing)
 - [License](#license)
+
+# What
+
+Terraformer is a CLI tool to generate terraform files from existing infrastructure (reverse Terraform).
 
 # Dependencies
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
 # Install
 
 Plugin:
 
 ```shell
-asdf plugin add terraformer
-# or
 asdf plugin add terraformer https://github.com/jmcvetta/asdf-terraformer.git
 ```
 
